@@ -28,7 +28,8 @@ bun link
 4. Set your Anthropic API key:
 
 ```bash
-lllm config set-api-key sk-ant-...
+mkdir -p ~/.lllm
+echo "ANTHROPIC_API_KEY=your-api-key-here" > ~/.lllm/.env
 ```
 
 ## Usage
@@ -75,14 +76,16 @@ Features:
 View your current configuration:
 
 ```bash
-lllm config show
+lllm config
 ```
 
-Set your API key:
+Your API key is stored in `~/.lllm/.env`. To set it up:
 
-```bash
-lllm config set-api-key <your-anthropic-api-key>
-```
+1. Create the directory: `mkdir -p ~/.lllm`
+2. Create the file: `echo "ANTHROPIC_API_KEY=your-key" > ~/.lllm/.env`
+3. Get your API key from: https://console.anthropic.com/settings/keys
+
+Note: A `.env.example` file is provided in the project for reference.
 
 ## How It Works
 
