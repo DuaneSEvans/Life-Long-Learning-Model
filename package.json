@@ -1,0 +1,25 @@
+{
+  "name": "lllm",
+  "version": "0.1.0",
+  "description": "Life Long Learning Model - AI-powered learning assistant",
+  "module": "src/index.ts",
+  "type": "module",
+  "bin": {
+    "lllm": "./src/index.ts"
+  },
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target node",
+    "link": "bun link"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.1",
+    "commander": "^14.0.2"
+  }
+}
