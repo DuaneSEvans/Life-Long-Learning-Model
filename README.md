@@ -28,8 +28,8 @@ bun link
 4. Set your Anthropic API key:
 
 ```bash
-mkdir -p ~/.lllm
-echo "ANTHROPIC_API_KEY=your-api-key-here" > ~/.lllm/.env
+cp .env.example .env
+# Edit .env and add your API key
 ```
 
 ## Usage
@@ -79,13 +79,13 @@ View your current configuration:
 lllm config
 ```
 
-Your API key is stored in `~/.lllm/.env`. To set it up:
+Your API key is stored in a `.env` file in the project directory:
 
-1. Create the directory: `mkdir -p ~/.lllm`
-2. Create the file: `echo "ANTHROPIC_API_KEY=your-key" > ~/.lllm/.env`
+1. Copy the example: `cp .env.example .env`
+2. Edit `.env` and add your Anthropic API key
 3. Get your API key from: https://console.anthropic.com/settings/keys
 
-Note: A `.env.example` file is provided in the project for reference.
+The `.env` file is gitignored and will not be committed to version control.
 
 ## How It Works
 
@@ -104,22 +104,27 @@ Note: A `.env.example` file is provided in the project for reference.
 
 ```
 lllm/
-├── src/
-│   ├── commands/
-│   │   ├── ask.ts      # Ask mode implementation
-│   │   ├── quiz.ts     # Quiz mode implementation
-│   │   └── config.ts   # Configuration management
-│   ├── lib/
-│   │   ├── claude.ts         # Claude API wrapper
-│   │   ├── topics.ts         # Topic management
-│   │   ├── quiz-generator.ts # Quiz generation
-│   │   └── config.ts         # Config utilities
-│   ├── .storage/
-│   │   ├── .topics/           # Markdown files per topic
-│   │   ├── .metadata.json    # Topic metadata
-│   │   └── progress.json     # Quiz progress (future)
-│   └── index.ts        # CLI entry point
-└── package.json
+├── .env.example          # Example environment variables
+├── .gitignore           # Git ignore rules
+├── bun.lock            # Bun lock file
+├── package.json        # Project dependencies and scripts
+├── tsconfig.json       # TypeScript configuration
+├── README.md           # Project documentation
+├── LICENSE             # MIT license
+└── src/
+    ├── commands/
+    │   ├── ask.ts      # Ask mode implementation
+    │   ├── quiz.ts     # Quiz mode implementation
+    │   └── config.ts   # Configuration command
+    ├── lib/
+    │   ├── claude.ts         # Claude API wrapper
+    │   ├── topics.ts         # Topic management & storage
+    │   └── quiz-generator.ts # Quiz generation logic
+    ├── .storage/             # (gitignored - created on first run)
+    │   ├── .topics/          # Markdown files per topic
+    │   ├── .metadata.json    # Topic metadata
+    │   └── progress.json     # Quiz progress tracking
+    └── index.ts              # CLI entry point
 ```
 
 ## Future Enhancements

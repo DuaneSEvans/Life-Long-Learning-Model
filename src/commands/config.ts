@@ -4,7 +4,7 @@ export const configCommand = new Command("config")
   .description("Show current configuration")
   .action(async () => {
     try {
-      const apiKey = process.env.ANTHROPIC_API_KEY
+      const apiKey = process.env["ANTHROPIC_API_KEY"]
       if (apiKey) {
         const masked = apiKey.slice(0, 7) + "..." + apiKey.slice(-4)
         console.log(`API Key: ${masked}`)

@@ -15,7 +15,7 @@ export class ClaudeClient {
   private client: Anthropic | null = null
 
   async initialize(): Promise<void> {
-    const apiKey = process.env.ANTHROPIC_API_KEY
+    const apiKey = process.env["ANTHROPIC_API_KEY"]
 
     if (!apiKey) {
       throw new Error(
